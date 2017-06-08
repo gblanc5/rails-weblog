@@ -22,7 +22,8 @@ class UserTest < ActiveSupport::TestCase
   test '#validation of the user model' do
     user = User.new(name: 'greg', password: '1234567', email: 'greg@none.com')
 
-    assert user.valid?, 'user not valid: ' + user.name
+    assert user.invalid?, 'user not valid: ' + user.name
+    assert_equal [:password], user.errors.keys
   end
 
 end
