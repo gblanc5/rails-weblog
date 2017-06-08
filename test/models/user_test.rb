@@ -1,7 +1,22 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  users = User.all
+  
+  test '#display_name when admin' do
+    users.each do |user|
+      if user.admin
+        assert_equal user.name + ' (admin)', user.display_name
+      end
+    end
+  end
+  
+  test '#display_name when not admin' do
+    users.each do |user|
+      if !user.admin
+        assert_equal user.name, user.display_name
+      end
+    end
+  end
+
 end
