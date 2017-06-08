@@ -19,4 +19,10 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test '#validation of the user model' do
+    user = User.new(name: 'greg', password: '1234567', email: 'greg@none.com')
+
+    assert user.valid?, 'user not valid: ' + user.name
+  end
+
 end
